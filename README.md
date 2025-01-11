@@ -1,4 +1,4 @@
-# ToolTip in Android Studio with Kotlin Compose
+# ToolTip in Jetpack Compose
 
 This repository contains a custom implementation of a **ToolTip** for Android applications developed using **Kotlin** and **Jetpack Compose**. The project is compatible with **Android Studio Ladybug Stable** version.
 
