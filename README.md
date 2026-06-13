@@ -1,38 +1,117 @@
-# World Cup 2026 Bracket Predictor
+# ToolTip in Jetpack Compose
 
-A static FIFA World Cup 2026 bracket predictor that can be hosted on Vercel and shared without a database.
+My first Android Components
+
+This repository contains a custom implementation of a **ToolTip** for Android applications developed using **Kotlin** and **Jetpack Compose**. The project is compatible with **Android Studio Ladybug Stable** version.
 
 ## Features
 
-- All 48 FIFA World Cup 2026 teams grouped from A to L.
-- Group ranking selectors for 1st, 2nd, 3rd, and 4th place.
-- Round of 32 through Final prediction flow.
-- Third-place knockout slots are selected from their eligible group pools.
-- Shareable prediction links using URL hash state.
-- No backend, API routes, authentication, cookies, or database.
+- Fully customizable ToolTip design.
+- Easy-to-use implementation with Compose's modern UI toolkit.
+- Supports dynamic positioning and animations.
+- Lightweight and performance-efficient.
 
-## How sharing works
+## Requirements
 
-Predictions are encoded into the URL hash:
+- **Android Studio Version**: Ladybug Stable  
+- **Kotlin**: Latest stable version supported by Ladybug.  
+- **Jetpack Compose**: Integrated into the project for building UI.
 
-```text
-/#p=<encoded-prediction>
-```
+## Configuration
 
-The hash is read by the browser and reconstructed locally. Nothing is stored on a server.
+### `build.gradle.kts` (Module: app)
 
-## Local preview
+```kotlin
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+}
 
-Open `index.html` directly in a browser, or serve the folder with any static server.
+android {
+    namespace = "com.example.tooltip"
+    compileSdk = 35
 
-```bash
-npx serve .
-```
+    defaultConfig {
+        applicationId = "com.example.tooltip"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
 
-## Vercel
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
 
-This repository is static. Vercel can deploy it directly with no build command.
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+    buildFeatures {
+        compose = true
+    }
+}
 
-## Data notes
+dependencies {
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+}
 
-The app includes the 2026 group draw and the Round of 32 bracket slot structure. The official table for third-place allocations depends on which eight third-place teams qualify, so the app keeps those selections explicit for the user.
+### `libs.versions.toml`
+
+```toml
+[versions]
+agp = "8.7.2"
+kotlin = "2.0.0"
+coreKtx = "1.15.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+composeBom = "2024.04.01"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "androidx-compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
