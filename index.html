@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Static FIFA World Cup 2026 bracket predictor with shareable URL predictions." />
+  <title>World Cup 2026 Bracket Predictor</title>
+  <style>
+    :root{color-scheme:dark;--bg:#071018;--card:rgba(255,255,255,.075);--card2:rgba(255,255,255,.115);--line:rgba(255,255,255,.15);--text:#f5f7fb;--muted:#9fb0c3;--accent:#67e8f9;--accent2:#22d3ee}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,rgba(34,211,238,.2),transparent 34rem),radial-gradient(circle at 90% 10%,rgba(16,185,129,.14),transparent 30rem),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1440px,calc(100% - 32px));margin:auto;padding:32px 0 56px}.panel{background:linear-gradient(180deg,var(--card),rgba(255,255,255,.045));border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,.22);backdrop-filter:blur(18px)}.hero{display:grid;grid-template-columns:minmax(0,1fr)360px;gap:24px;align-items:end;padding:clamp(24px,4vw,48px)}.eyebrow{margin:0 0 8px;color:var(--accent);font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}h1,h2,h3,p{margin-top:0}h1{margin-bottom:14px;font-size:clamp(2.35rem,7vw,6rem);line-height:.95;letter-spacing:-.075em}h2{margin-bottom:10px;font-size:clamp(1.7rem,3.4vw,3.1rem);letter-spacing:-.045em}.copy,.section p,.notes p{color:var(--muted);line-height:1.7}.actions{display:grid;gap:12px}label{display:grid;gap:8px;color:var(--muted);font-size:.86rem;font-weight:800}input,select{width:100%;min-height:44px;color:var(--text);background:rgba(7,16,24,.75);border:1px solid var(--line);border-radius:14px;padding:0 12px;outline:none}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(103,232,249,.14)}.primary,.ghost,.pick{border:1px solid transparent;border-radius:14px;min-height:44px;padding:0 14px;font-weight:900}.primary{color:#041016;background:var(--accent)}.ghost{color:var(--text);background:rgba(255,255,255,.08);border-color:var(--line)}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:16px 0 48px}.metric{padding:20px}.metric span{display:block;color:var(--muted);font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.metric strong{display:block;margin-top:10px;font-size:2rem;letter-spacing:-.04em}.metric.champion strong{font-size:1.25rem;line-height:1.3}.section{margin-top:48px;max-width:760px}.groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.group{padding:18px}.group-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.group-head span{color:var(--muted);font-size:.8rem;font-weight:900}.rank{display:grid;grid-template-columns:42px minmax(0,1fr);gap:10px;align-items:center;margin-top:12px}.rank b{color:var(--accent)}.bracket{display:grid;grid-template-columns:repeat(6,minmax(260px,1fr));gap:16px;overflow-x:auto;padding-bottom:18px}.stage{display:grid;align-content:start;gap:12px}.stage>h3{position:sticky;top:0;z-index:2;padding:12px 8px;background:rgba(7,16,24,.84);border-radius:14px;backdrop-filter:blur(12px)}.match{display:grid;gap:10px;padding:14px}.match-title{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.07em}.match-title strong{color:var(--accent)}.slot{display:grid;gap:3px;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}.slot b{font-size:.98rem}.slot small{color:var(--muted)}.third-box{display:grid;gap:10px;padding:10px;border:1px dashed var(--line);border-radius:16px}.picks{display:grid;gap:8px}.pick{color:var(--text);background:rgba(255,255,255,.08);border-color:var(--line);text-align:left}.pick.selected{color:#041016;background:var(--accent2);border-color:var(--accent2)}.empty{color:var(--muted);font-size:.88rem}.notes{margin-top:36px;padding:24px}.notes p:last-child{margin-bottom:0}@media(max-width:1180px){.hero{grid-template-columns:1fr}.metrics,.groups{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:min(100% - 20px,1440px);padding-top:16px}.metrics,.groups{grid-template-columns:1fr}.bracket{grid-template-columns:repeat(6,minmax(240px,86vw))}.panel{border-radius:18px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">FIFA World Cup 2026</p>
+        <h1>Bracket Predictor</h1>
+        <p class="copy">Pick group rankings, assign eligible third-place teams, choose knockout winners, then share the full prediction as a URL. No database or login is required.</p>
+      </div>
+      <div class="actions">
+        <label>Prediction title<input id="title" maxlength="80" /></label>
+        <button class="primary" id="share">Copy share link</button>
+        <button class="ghost" id="reset">Reset picks</button>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="metric panel"><span>Groups</span><strong>12</strong></div>
+      <div class="metric panel"><span>Teams</span><strong>48</strong></div>
+      <div class="metric panel"><span>Knockout matches</span><strong>32</strong></div>
+      <div class="metric champion panel"><span>Predicted champion</span><strong id="champion">Not selected</strong></div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Step 1</p><h2>Group ranking</h2>
+      <p>Top two teams feed directly into the bracket. Third-place teams become available for third-place knockout slots.</p>
+    </section>
+    <section class="groups" id="groups"></section>
+
+    <section class="section">
+      <p class="eyebrow">Step 2</p><h2>Knockout bracket</h2>
+      <p>Third-place pairings are shown as eligible group pools. Choose the third-place team for each pool, then select winners to complete the bracket.</p>
+    </section>
+    <section class="bracket" id="bracket"></section>
+
+    <section class="notes panel">
+      <h2>How sharing works</h2>
+      <p>The share button serializes your picks into the URL hash. Vercel only serves static files; there are no API routes, sessions, user tables, or prediction records.</p>
+      <p>The official third-place allocation depends on which eight third-place groups qualify, so this predictor keeps those choices explicit.</p>
+    </section>
+  </main>
+
+<script>
+const GROUPS={
+ A:['Mexico','South Africa','South Korea','Czech Republic'],
+ B:['Canada','Bosnia and Herzegovina','Qatar','Switzerland'],
+ C:['Brazil','Morocco','Haiti','Scotland'],
+ D:['United States','Paraguay','Australia','Turkey'],
+ E:['Germany','Curaçao','Ecuador','Côte d’Ivoire'],
+ F:['Netherlands','Japan','Sweden','Tunisia'],
+ G:['Belgium','Egypt','Iran','New Zealand'],
+ H:['Spain','Cape Verde','Saudi Arabia','Uruguay'],
+ I:['France','Senegal','Iraq','Norway'],
+ J:['Argentina','Algeria','Austria','Jordan'],
+ K:['Portugal','DR Congo','Uzbekistan','Colombia'],
+ L:['England','Croatia','Ghana','Panama']
+};
+const MATCHES=[
+ [73,'Round of 32','A2','B2'],[74,'Round of 32','E1','3A/B/C/D/F'],[75,'Round of 32','F1','C2'],[76,'Round of 32','C1','F2'],
+ [77,'Round of 32','I1','3C/D/F/G/H'],[78,'Round of 32','E2','I2'],[79,'Round of 32','A1','3C/E/F/H/I'],[80,'Round of 32','L1','3E/H/I/J/K'],
+ [81,'Round of 32','D1','3B/E/F/I/J'],[82,'Round of 32','G1','3A/E/H/I/J'],[83,'Round of 32','K2','L2'],[84,'Round of 32','H1','J2'],
+ [85,'Round of 32','B1','3E/F/G/I/J'],[86,'Round of 32','J1','H2'],[87,'Round of 32','K1','3D/E/I/J/L'],[88,'Round of 32','D2','G2'],
+ [89,'Round of 16','W73','W75'],[90,'Round of 16','W74','W77'],[91,'Round of 16','W76','W78'],[92,'Round of 16','W79','W80'],
+ [93,'Round of 16','W83','W84'],[94,'Round of 16','W81','W82'],[95,'Round of 16','W86','W88'],[96,'Round of 16','W85','W87'],
+ [97,'Quarter-finals','W89','W90'],[98,'Quarter-finals','W93','W94'],[99,'Quarter-finals','W91','W92'],[100,'Quarter-finals','W95','W96'],
+ [101,'Semi-finals','W97','W98'],[102,'Semi-finals','W99','W100'],[103,'Third place','L101','L102'],[104,'Final','W101','W102']
+].map(([id,stage,a,b])=>({id,stage,a,b}));
+const STAGES=['Round of 32','Round of 16','Quarter-finals','Semi-finals','Third place','Final'];
+const byId=Object.fromEntries(MATCHES.map(m=>[m.id,m]));
+let state=load()||defaults();
+
+function defaults(){return{title:'My World Cup 2026 Prediction',order:Object.fromEntries(Object.entries(GROUPS).map(([g,t])=>[g,[...t]])),third:{},winners:{}}}
+function encode(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function decode(s){s=s.replace(/-/g,'+').replace(/_/g,'/');s+='='.repeat((4-s.length%4)%4);return JSON.parse(decodeURIComponent(escape(atob(s))))}
+function load(){try{const p=new URLSearchParams(location.hash.slice(1)).get('p');return p?sanitize(decode(p)):null}catch{return null}}
+function sanitize(raw){const base=defaults();for(const g in GROUPS){const seen=[];(raw.order?.[g]||[]).forEach(t=>{if(GROUPS[g].includes(t)&&!seen.includes(t))seen.push(t)});base.order[g]=[...seen,...GROUPS[g].filter(t=>!seen.includes(t))].slice(0,4)}base.title=String(raw.title||base.title).slice(0,80);base.third=raw.third||{};base.winners=raw.winners||{};return base}
+function rankLabel(i){return ['1st','2nd','3rd','4th'][i]}
+function slotLabel(slot){if(/^([A-L])([1234])$/.test(slot)){const[,g,r]=slot.match(/^([A-L])([1234])$/);return (r==1?'Winner':r==2?'Runner-up':r==3?'3rd':'4th')+' Group '+g}if(/^3/.test(slot))return '3rd place from '+slot.slice(1);if(/^W/.test(slot))return 'Winner M'+slot.slice(1);if(/^L/.test(slot))return 'Loser M'+slot.slice(1);return slot}
+function slotValue(slot,mid){let m;if(m=slot.match(/^([A-L])([1234])$/))return state.order[m[1]][Number(m[2])-1];if(slot[0]==='3'){const selected=state.third[mid];return thirdOptions(slot).includes(selected)?selected:''}if(slot[0]==='W'){const source=byId[slot.slice(1)],opts=matchOptions(source),w=state.winners[source.id];return opts.includes(w)?w:''}if(slot[0]==='L'){const source=byId[slot.slice(1)],opts=matchOptions(source),w=state.winners[source.id];return opts.includes(w)?opts.find(x=>x!==w)||'':''}return ''}
+function thirdOptions(slot){return slot.slice(1).split('/').map(g=>state.order[g]?.[2]).filter(Boolean)}
+function matchOptions(m){return [slotValue(m.a,m.id),slotValue(m.b,m.id)].filter(Boolean)}
+function currentWinner(m){const opts=matchOptions(m),w=state.winners[m.id];return opts.includes(w)?w:''}
+function setGroup(g,index,team){const arr=[...state.order[g]],old=arr[index],swap=arr.indexOf(team);if(swap>=0)arr[swap]=old;arr[index]=team;state.order[g]=arr;render()}
+function setThird(mid,team){state.third[mid]=team;render()}
+function setWinner(mid,team){state.winners[mid]=team;render()}
+function saveToHash(){const url=new URL(location.href);url.hash='p='+encode(state);history.replaceState(null,'',url)}
+async function copyShare(){saveToHash();try{await navigator.clipboard.writeText(location.href);document.getElementById('share').textContent='Copied link';setTimeout(()=>document.getElementById('share').textContent='Copy share link',1500)}catch{prompt('Copy this link',location.href)}}
+function reset(){state=defaults();history.replaceState(null,'',location.pathname);render()}
+
+function renderGroups(){const root=document.getElementById('groups');root.innerHTML='';for(const [g,teams] of Object.entries(GROUPS)){const card=document.createElement('article');card.className='group panel';card.innerHTML=`<div class="group-head"><h3>Group ${g}</h3><span>4 teams</span></div>`;state.order[g].forEach((selected,i)=>{const row=document.createElement('label');row.className='rank';row.innerHTML=`<b>${rankLabel(i)}</b>`;const sel=document.createElement('select');teams.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;o.selected=t===selected;sel.appendChild(o)});sel.onchange=e=>setGroup(g,i,e.target.value);row.appendChild(sel);card.appendChild(row)});root.appendChild(card)}}
+function renderBracket(){const root=document.getElementById('bracket');root.innerHTML='';STAGES.forEach(stage=>{const col=document.createElement('section');col.className='stage';col.innerHTML=`<h3>${stage}</h3>`;MATCHES.filter(m=>m.stage===stage).forEach(m=>{const opts=matchOptions(m),winner=currentWinner(m);const card=document.createElement('article');card.className='match panel';card.innerHTML=`<div class="match-title"><span>Match ${m.id}</span><strong>${m.stage==='Final'?'Trophy match':m.stage}</strong></div>${slotHtml(m.a,m.id)}${slotHtml(m.b,m.id)}`;[m.a,m.b].filter(s=>s[0]==='3').forEach(s=>{const box=document.createElement('div');box.className='third-box';const label=document.createElement('label');label.textContent=slotLabel(s);const sel=document.createElement('select');sel.innerHTML='<option value="">Select third-place team</option>';thirdOptions(s).forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;o.selected=state.third[m.id]===t;sel.appendChild(o)});sel.onchange=e=>setThird(m.id,e.target.value);label.appendChild(sel);box.appendChild(label);card.appendChild(box)});const picks=document.createElement('div');picks.className='picks';if(!opts.length)picks.innerHTML='<span class="empty">Waiting for previous picks</span>';opts.forEach(t=>{const b=document.createElement('button');b.className='pick'+(winner===t?' selected':'');b.textContent=t;b.onclick=()=>setWinner(m.id,t);picks.appendChild(b)});card.appendChild(picks);col.appendChild(card)});root.appendChild(col)})}
+function slotHtml(slot,mid){const v=slotValue(slot,mid);return `<div class="slot"><b>${v||slotLabel(slot)}</b><small>${slotLabel(slot)}</small></div>`}
+function render(){document.getElementById('title').value=state.title;const champ=currentWinner(byId[104]);document.getElementById('champion').textContent=champ||'Not selected';renderGroups();renderBracket()}
+document.getElementById('title').addEventListener('input',e=>{state.title=e.target.value});document.getElementById('share').onclick=copyShare;document.getElementById('reset').onclick=reset;render();
+</script>
+</body>
+</html>
